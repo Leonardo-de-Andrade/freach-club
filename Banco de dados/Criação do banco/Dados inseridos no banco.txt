@@ -1,0 +1,34 @@
+insert into usuario values (1, 'usuario', 'usuario@email.com', md5('admin'), 'Ativo');
+
+insert into categoria values (1, 'Comidas', '');
+insert into categoria values (2, 'Bebidas', '');
+
+
+insert into fornecedor values (1, 'Miro Hashira', '(51) 99645-8491', 'Hiro Industrias');
+insert into fornecedor values (2, 'Marlon Soares', '(51) 94114-4614', 'Soares alimentos');
+
+insert into cliente values(1, 'Jérson', '037.132.730-06', '29.526.933-9', '(51) 99592-5161');
+
+insert into produto values (1, 'Croque Madame', 50.00, '', 2, 1);
+insert into produto values (2, 'Fois gras', 70.00, '', 1, 1);
+insert into produto values (3, 'Tartare de bœuf', 70.00, '', 2, 1);
+insert into produto values (4, 'Pato', 45.00, '', 1, 1);
+insert into produto values (5, 'Crepe', 25.00, '', 1, 1);
+insert into produto values (6, 'Sopa de cebola', 50.00, '', 2, 1);
+insert into produto values (8, 'Fondue', 60.00, '', 1, 1);
+insert into produto values (9, 'Escargots', 80.00, '', 1, 1);
+insert into produto values (10, 'Croissant', 10.00, '', 1, 1);
+insert into produto values (11, 'Vinho', 70.00, '', 1, 2);
+insert into produto values (12, 'Vodka', 60.00, '', 2, 2);
+insert into produto values (13, 'Cerveja lata', 5.50, '', 1, 2);
+
+
+insert into pedido values (1, 1, 1, 'Dinheiro', 'Ativo', '01-05-2020', 100);
+insert into pedido values (2, 1, 1, 'Crédito', 'Ativo', '19-04-2020', 100);
+insert into pedido values (3, 1, 1, 'Crédito', 'Ativo', '01-03-2019', 100);
+insert into pedido values (4, 1, 1, 'Débito', 'Desativado', '30-04-2020', 100);
+
+insert into pedido_tem_produto values (1, 1, 2);
+insert into pedido_tem_produto values (2, 1, 2);
+insert into pedido_tem_produto values (3, 1, 2);
+insert into pedido_tem_produto values (4, 1, 2);

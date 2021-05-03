@@ -1,0 +1,58 @@
+create table usuario (
+	id SERIAL PRIMARY KEY NOT NULL,
+	nome VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	senha VARCHAR(255) NOT NULL,
+	status VARCHAR(50) NOT NULL
+);
+
+create table cliente(
+	id SERIAL PRIMARY KEY NOT NULL,
+	nome VARCHAR(255) NOT NULL,
+	cpf VARCHAR(14),
+	rg VARCHAR(15),	
+	telefone VARCHAR(15)
+);
+
+create table fornecedor (
+	id SERIAL PRIMARY KEY NOT NULL,
+	nome VARCHAR(255) NOT NULL,
+	telefone VARCHAR(15) NOT NULL,
+	empresa VARCHAR(255)
+);
+
+create table categoria (
+	id SERIAL PRIMARY KEY NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+	descricao TEXT
+);
+
+create table produto (
+	id SERIAL PRIMARY KEY NOT NULL,
+	nome VARCHAR(255) NOT NULL,
+	valor_unitario DECIMAL(10, 2) NOT NULL,
+	descricao TEXT,
+	fornecedor_id INT NOT NULL,
+	categoria_id INT NOT NULL,
+	CONSTRAINT FK_FORNECEDOR FOREIGN KEY(fornecedor_id) REFERENCES fornecedor,
+	CONSTRAINT FK_CATEGORIA FOREIGN KEY(categoria_id) REFERENCES categoria
+);
+
+create table pedido (
+	id SERIAL PRIMARY KEY NOT NULL,
+	cliente_id INT NOT NULL,
+	usuario_id INT NOT NULL,
+    forma_pagamento VARCHAR(50),
+    status VARCHAR(50) NOT NULL,
+	data DATE NOT NULL,
+    total Decimal(10, 2) NOT NULL,
+	CONSTRAINT FK_CLIENTE FOREIGN KEY(cliente_id) REFERENCES cliente,
+	CONSTRAINT FK_USUARIO FOREIGN KEY(usuario_id) REFERENCES usuario
+);
+
+create table pedido_tem_produto (
+	pedido_id INT NOT NULL REFERENCES pedido(id),
+	produto_id INT NOT NULL REFERENCES produto(id),
+	quantidade INT NOT NULL,
+	CONSTRAINT PK_PEDIDO_PRODUTO PRIMARY KEY(pedido_id, produto_id)
+);
